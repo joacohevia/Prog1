@@ -9,7 +9,7 @@ public class recu_mat_supermercado {
                         {0,851,543,625,845,914,0,754,184,452,637,917,0,0,0}};
        int [] A1 = {1,2,0,0};
        int [] A2 = {3,0,0,0};
-       int X=500;
+       int X=400;
        calcular_prom(matriz,A1,A2,X);
     }
     public static void calcular_prom(int [][]matriz,int[]arr1,int []arr2, int X){
@@ -75,7 +75,8 @@ public class recu_mat_supermercado {
             sum+=arr2[ini];
             ini++;    
         }
-        int total = sum/sec;
+        float total = sum/sec;
+        System.out.println(total);
         if (total>X) {
             return true;
         }else{

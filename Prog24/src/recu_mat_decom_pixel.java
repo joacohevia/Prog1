@@ -46,9 +46,9 @@ public class recu_mat_decom_pixel {
                     //Modificar la secuencia si es necesario
                     descomprimir_secuencia(arr,ini,cantidad,pixel);
                     totalDescomprimidos+=cantidad;    
-                    fin++;//Se suman los agregados y se descuentan las dos existentes para  posicion y cantidad
+                    fin+=cantidad-2;//Se suman los agregados y se descuentan las dos existentes para  posicion y cantidad
+                    //no es fin++ porq agrega muchos elementos
                 }
-      
             }
         }
         return totalDescomprimidos;

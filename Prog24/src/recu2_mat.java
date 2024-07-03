@@ -72,14 +72,17 @@ public class recu2_mat {
     }
     public static int buscar_coincidencia(int[]arr,int ini,int fin){
         while (ini<=fin) {
-            if (arr[ini]>Y) {
-                return ini;
+            if (arr[ini]>Y) {//si tuviera q buscar varios elementos en la sec
+                return ini;//eliminar()
+                //fin--;
+                //ini--;Revisar de nuevo la posición actual después del corrimiento
             }
             ini++;
         }
 
         return -1;
     }
+    
     public static void eliminar(int[]arr,int ini){
         for(int i=ini; i<MAXCOL-1; i++){
             arr[i]=arr[i+1];

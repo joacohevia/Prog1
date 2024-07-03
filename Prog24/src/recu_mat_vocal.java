@@ -42,9 +42,7 @@ public class recu_mat_vocal {
             mostrar(matriz);
         }
         public static void procesar(char[][] matriz){  // desarmo texto en renglones
-    
             int cantEncriptadas = 0;
-    
             for (int i=0; i<MAXF; i++){
                 cantEncriptadas += encriptarRenglon(matriz[i]);
             }
@@ -52,12 +50,10 @@ public class recu_mat_vocal {
     
         }
         public static int encriptarRenglon(char[] fila){
-    
             int ini = 0;
             int fin = -1;
             int cantEncriptadas = 0;
             int cantModif = 0;
-    
             while (ini < MAXC) {
                 ini = buscarInicio(fila, fin+1);
                 if (ini<MAXC){
@@ -66,7 +62,6 @@ public class recu_mat_vocal {
                     if (cantModif>0) {
                         fin += cantModif;//mas la cant modificada
                         cantEncriptadas++;    
-                        
                     }
                 }
             }        
@@ -75,13 +70,9 @@ public class recu_mat_vocal {
         }
     
         public static int encriptarPalabra(char[] fila, int ini, int fin){
-    
             int cantModifConsonante = 0;
             int tamanio = fin - ini +1;
-            
-    
             while (ini <= fin){
-    
                 if (esVocal(fila[ini])){
                       fila[ini] = (char) (fila[ini] + tamanio); 
                       ini++;  
@@ -98,8 +89,7 @@ public class recu_mat_vocal {
         }   
         public static void correrADerecha(char[] arr, int pos) {
             for (int i = MAXC - 1; i > pos; i--){
-                arr[i] = arr[i - 1];
-                
+                arr[i] = arr[i - 1];  
             }
         }
         public static boolean esVocal(char c){
@@ -113,7 +103,7 @@ public class recu_mat_vocal {
         public static boolean esLetra(char c){
                     //si esta en este rango
                     //97 <= 101 && 101 <= 122
-            return (('a' <= c && c <= 'z' ) || ('A' <= c && c <= 'Z' )); 
+            return ((c >= 'a' && c <= 'z' ) || (c >= 'A' && c <= 'Z' )); 
                 // c  >='a' && c <= 'z'
         }
     

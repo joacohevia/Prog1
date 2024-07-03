@@ -68,7 +68,7 @@ public class ej_parcial_supermercado {
         for (int i = MAX_p - 1; i > fin; i--) {
             arr_p[i] = arr_p[i - 1];
         }
-        arr_p[fin + 1] = produc; 
+        arr_p[fin+1] = produc; 
     }
 
     /*
