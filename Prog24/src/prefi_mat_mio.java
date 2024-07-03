@@ -49,6 +49,7 @@ public class prefi_mat_mio {
                         cant=0;
                         aux=false;
                     }
+                    
                     /*if (prom_creciente(ini,fin,mat)) {
                         cant=1;
                     }else{
