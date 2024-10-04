@@ -1,23 +1,20 @@
-/*me pide que dada una matriz donde las filas son los dias y cada sec una hora determinada, recorra
-cada fila y saque promedio de cada sec, cada promedio debe ser mayor al promedio anterior y si es asi
-debo evaluar que el siguiente dia cumpla con lo mismo para que sea 'true', si se cumple en un dia 
-pero no en el siguiente en 'false'
- */
-public class prefi_mat_mio {
+public class prefi_mat_mioo {
     public static final int MAXC=15;
-    public static final int MAXF=4;
+    public static final int MAXF=6;
     public static final int SEPARADOR=0;
     public static void main(String[] args) {
         int [][] matriz = {{0,625,815,900,0,562,952,300,0,365,169,254,0,0,0},
-                           {0,958,67,57,221,0,596,623,600,0,587,889,984,0,0},
-                           {0,0,700,257,0,0,0,854,958,388,0,954,842,925,0},
-                           {0,988,899,874,0,254,258,625,200,0,568,958,210,0,0}};
-        int dias_consecutivos=2;
-        descomprimir(matriz,dias_consecutivos);
+        {0,958,67,57,221,0,596,623,600,0,587,889,984,0,0},
+        {0,0,700,257,0,0,0,854,958,388,0,954,842,925,0},
+        {0,988,899,874,0,254,258,625,200,0,568,958,210,0,0},
+     {0,958,67,57,221,0,596,623,600,0,587,889,984,0,0},
+        {0,0,700,257,0,0,0,854,958,388,0,954,842,925,0}};
+int dias_consecutivos=2;
+descomprimir(matriz,dias_consecutivos);
     }
-
     public static void descomprimir(int [][] matriz, int dias_consec){
         int cant=0,sies=0;
+        
         for(int i=0; i<MAXF; i++){
             if (es_creciente(matriz[i])) {
                 cant++;
@@ -33,8 +30,7 @@ public class prefi_mat_mio {
     }
 
     public static boolean es_creciente(int [] mat){
-        int ini=0,fin=-1;
-
+        int ini=0,fin=-1,cant=0;
         float prom=0;
         boolean aux=true,sies=false;
         while (ini<MAXC && aux) {
@@ -61,27 +57,7 @@ public class prefi_mat_mio {
         }
         return sies;
     }
-    //ME EQUIVOQUE EN Q UNA MISMA FUNCION COMPARE EL ANTERIOR CUANDO DEBI HACERLO EN OTRA
-    //PORQ CADA VEZ Q ITERA PROM ANTERIOR VUELVE A SER 0 EMTONCES AL LLAMARLO DESDE EL 
-    //ES CRECIENTE PROM ANTERIOR VA A VALER EL ANTERIOR DE LA SEC Y CUANDO TERMINE Y LLAME DE NUEVO
-    //VA A VALER 0
 
-    /*public static boolean prom_creciente(int ini,int fin,int[]mat){
-        int sec=0,sum=0;
-        sec=fin-ini+1;
-        float prom_anterior=0;
-        while (ini<=fin) {
-            sum+=mat[ini];
-            ini++;
-        }
-        float total = sum/sec;
-        if (total>prom_anterior) {
-            prom_anterior=total;
-            return true;
-        }else{
-            return false;
-        }
-    }*/
     public static float prom_creciente(int ini,int fin,int[]mat){
         int sec=0,sum=0;
         sec=fin-ini+1;
@@ -89,7 +65,7 @@ public class prefi_mat_mio {
             sum+=mat[ini];
             ini++;
         }
-        float total =(float) sum/sec;
+        float total = sum/sec;
         return total;
     }
 
