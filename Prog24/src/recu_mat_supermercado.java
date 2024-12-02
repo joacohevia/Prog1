@@ -76,7 +76,7 @@ public class recu_mat_supermercado {
             ini++;    
         }
         float total = sum/sec;
-        System.out.println(total);
+        //System.out.println(total);
         if (total>X) {
             return true;
         }else{

@@ -5,8 +5,8 @@ de la imagen distintas del color negro (0 en la escala de valores del pixel). Se
 para un arreglo (luego dicha solución se reutilizará en un futuro para cada fila de la matriz). Para ello, se pide
 realizar un programa en JAVA que, dado un arreglo de tamaño M, para cada secuencia delimitada por uno o
 mas pixeles de color negro (valor 0) con más de X repeticiones de un valor de píxel (todos los elementos de la
-    secuencia deben ser iguales), comprima la secuencia poniendo en la primera posición el valor del pixel que se
-    repite y a continuación el valor negado de la cantidad de ocurrencias. El arreglo empieza y termina con un
+secuencia deben ser iguales), comprima la secuencia poniendo en la primera posición el valor del pixel que se
+repite y a continuación el valor negado de la cantidad de ocurrencias. El arreglo empieza y termina con un
 separador 0 (color negro). Implementar usando las buenas prácticas de programación estructurada vistas en
 la cátedra.
 Ejemplo:
@@ -68,6 +68,7 @@ public class ej_parcial_disp {
     public static boolean son_igual(int[] arregloImagen, int inicio, int fin) {
         boolean aux=false;
             while (inicio<=fin && arregloImagen[inicio]==arregloImagen[inicio+1]){
+                //en la pos 8 compara 8+1=pos 9 emtonces se rompe porque no son iguales y ini vale 8 igual que fin
                 inicio++;
             }
             if (inicio==fin) { //if (inicio>fin) dos arr
@@ -76,6 +77,7 @@ public class ej_parcial_disp {
         return aux;
         }
 
+        
     public static void mostrar_arreglo(int[]arr_imagen){
         for(int i=0; i<MAX-1; i++){
             System.out.print(arr_imagen[i]+"|");
@@ -90,7 +92,7 @@ public class ej_parcial_disp {
     }
     
     public static void comprimir(int inicio,int fin, int[]arr_imagen, int sec){
-        for(int i=inicio; i<fin-1; i++){
+        for(int i=inicio; i<fin-1; i++){//fin-1 para que me deje DOS 67(ya deja uno al ser i<fin)
             corrimiento_izq(arr_imagen, inicio);
         }
         arr_imagen[inicio+1]=sec*-1;

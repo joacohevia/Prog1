@@ -30,7 +30,7 @@ public class recu2_mat {
     public static final int SEPARADOR=0;
     public static void main(String[] args) {
         int [][] matriz = {{0,67,25,0,14,0,33,68,44,0,5,98,0,0,0,0,0,0,0,0},
-                            {0,0,25,25,0,55,3,0,75,44,44,0,60,1,0,0,0,0,0,0},
+                            {0,0,255,25,0,55,3,0,75,44,44,0,60,1,0,0,0,0,0,0},
                             {0,44,44,44,0,15,0,88,9,0,12,0,0,0,0,0,0,0,0,0}
                           };
     descomprimir(matriz);

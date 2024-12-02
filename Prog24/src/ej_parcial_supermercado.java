@@ -27,18 +27,17 @@ elementos. El ejemplo es meramente ilustrativo. La solución planteada debe perm
 resolver el problema para cualquier arreglo P y T o valores R y C. Aplicar los conceptos y
 buenas prácticas vistos en clase.
  */
-//DUDAS: A Q SE REF Q SIEMPRE HAY LUGAR SUF?? */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class ej_parcial_supermercado {
-    public static int[] arr_p = {0, 0, 12, 8, 18, 0, 15, 5, 4, 7, 10, 0, 8, 9, 12, 0, 19, 10, 9, 0, 0, 0, 0, 0, 0};
+    public static int[] arr_p = {0, 0, 12, 9, 18, 0, 15, 5, 4, 7, 10, 0, 8, 9, 12, 0, 19, 10, 9, 0, 0, 0, 0, 0, 0};
     public static final int MAX_p = 25;
     public static int[] arr_t = {9, 8};
     public static final int MAX_t = 2;
 
     public static void main(String[] args) {
-        int inicio = 0, fin = -1, produc, cant = 5; // maximo de inserciones
+        int inicio = 0, fin = -1, produc, cant = 4; // maximo de inserciones
         produc = productos_en_promocion();
         if (produc > 0) {
             while (inicio < MAX_p) {
@@ -59,7 +58,7 @@ public class ej_parcial_supermercado {
 
     public static void mostrarArreglo() {
         for (int i = 0; i < MAX_p; i++) {
-            System.out.print("|" + arr_p[i] + "|");
+            System.out.print("|" + arr_p[i]);
         }
         System.out.println();
     }

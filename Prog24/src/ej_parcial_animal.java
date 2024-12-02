@@ -25,9 +25,14 @@ public class ej_parcial_animal {
                                                                   //34,55,-1,23,34,57,-1
         int [] arr_disp =   {-1,12,22,44,-1,23,34,55,-1,23,34,55,-1,23,34,55,-1,23,34,57,-1};
         int [] arr_patron = {-1,-1,-1,-1,-1,-1,-1,-1,23,34,55,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+        mostrar_arreglo(arr_disp);
+        buscarIndices(arr_disp,arr_patron);
+        mostrar_arreglo(arr_disp);
+       
+    }
+    public static void buscarIndices(int [] arr_disp, int [] arr_patron){
         int inicio=0,fin=-1,cant=0;
         int N=2;
-        mostrar_arreglo(arr_disp);
         while (inicio<MAX) {
             inicio=buscar_inicio(arr_disp,fin+1);
             if (inicio<MAX) {
@@ -43,7 +48,7 @@ public class ej_parcial_animal {
                     cant=0;//si no entra cant vuelve a cero porque deben ser CONSECUTIVAS
                 }
             }
-        } mostrar_arreglo(arr_disp);
+        } 
     }
     public static void mostrar_arreglo(int[]arr_disp){
         for(int i=0; i<MAX-1; i++){
@@ -66,10 +71,11 @@ public class ej_parcial_animal {
     public static boolean comparar(int inicio, int fin, int[]arr_disp, int ini_p, int fin_p, int[]arr_patron){
         boolean aux = false;
             while (inicio<=fin && arr_disp[inicio] == arr_patron[ini_p]) {
+                //aca una vez que ini es igual a fin itera por ultima vez haciendo que ini>fin
                 inicio++;
                 ini_p++;
             }
-            if (inicio>fin) {
+            if (inicio>fin) {//necesario para saber si se recorrieron todos los elementos
                 aux=true;
             }
         return aux;
@@ -77,34 +83,13 @@ public class ej_parcial_animal {
     public static boolean son_igual(int inicio, int fin, int [] arr_disp, int [] arr_patron){
         int ini_p=0,fin_p=-1;
         boolean aux = false;
-        if (ini_p<MAX) {
-                ini_p=buscar_inicio_p(arr_patron, fin_p+1);
-                fin_p=buscar_fin_p(arr_patron, ini_p);
-                if (fin-inicio+1==fin_p-ini_p+1 && comparar(inicio,fin,arr_disp,ini_p,fin_p,arr_patron)) {
+        ini_p=buscar_inicio(arr_patron, fin_p+1);
+        fin_p=buscar_fin(arr_patron, ini_p);
+            if (fin-inicio+1==fin_p-ini_p+1 && comparar(inicio,fin,arr_disp,ini_p,fin_p,arr_patron)) {
                     aux=true;
-                }
             }
         return aux;
     }
-
-
-    public static int buscar_fin_p(int[]arr_patron, int ini_p){
-        int fin=ini_p;
-            while (fin<MAX && arr_patron[fin] != SEPARADOR) {
-                fin++;
-            }
-        return fin-1;
-    }
-
-    public static int buscar_inicio_p(int[]arr_patron, int fin_p){
-        int ini=fin_p;
-            while (ini<MAX && arr_patron[ini] == SEPARADOR) {
-                ini++;
-            }
-        return ini;
-    }
-
-   
     public static int buscar_fin(int [] arr_disp, int inicio){
         int fin=inicio;
             while (fin<MAX && arr_disp[fin] != SEPARADOR) {

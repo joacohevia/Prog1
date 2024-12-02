@@ -27,7 +27,7 @@ public class recu_mat_decom_pixel {
 
         }
         if (totalDescomprimidos>0){
-            System.out.println("Total: "+totalDescomprimidos+" Fila: "+maxFila);
+            System.out.println("Total: "+totalDescomprimidos+" MAYOR DESCOM: "+maxDescomprimidosFila+" Fila: "+maxFila);
         }else{
             System.out.println("No hubo pixeles para descomprimir en la imagen");
         }
@@ -40,14 +40,16 @@ public class recu_mat_decom_pixel {
             if (ini<COLUMNAS){
                 fin = obtener_fin_secuencia(arr, ini);
                 //Evaluar condicion
-                int cantidad = -arr[ini];
-                if (cantidad>0){
-                    int pixel = arr[ini+1];
-                    //Modificar la secuencia si es necesario
-                    descomprimir_secuencia(arr,ini,cantidad,pixel);
-                    totalDescomprimidos+=cantidad;    
-                    fin+=cantidad-2;//Se suman los agregados y se descuentan las dos existentes para  posicion y cantidad
-                    //no es fin++ porq agrega muchos elementos
+                if (arr[ini]<0) {
+                    int cantidad = -arr[ini];
+                    if (cantidad>0){
+                        int pixel = arr[ini+1];
+                        //Modificar la secuencia si es necesario
+                        descomprimir_secuencia(arr,ini,cantidad,pixel);
+                        totalDescomprimidos+=cantidad;    
+                        fin+=cantidad-2;//Se suman los agregados y se descuentan las dos existentes para  posicion y cantidad
+                        //no es fin++ porq agrega muchos elementos
+                    } 
                 }
             }
         }

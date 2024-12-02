@@ -11,7 +11,7 @@ l|a| |c|a|s|a| |r|o|j|a|,| |a| |l|a| |v|u|e|l|t|a| |d|e| |l|a| |e|s|q|u|i|n|a|.|
 
 Y una lista de stopwords S
 
-a| |l|o| |l|o|s| |d|e| |l||a| |l|a|s|
+a| |l|o| |l|o|s| |d|e| |l|a| |l|a|s|
 
 El arreglo A debería quedar de la siguiente forma luego de la eliminación de stopwords:
 c|a|s|a| |r|o|j|a|,|  |v|u|e|l|t|a|e|s|q|u|i|n|a . */
@@ -46,7 +46,7 @@ public class ej_parcial_stop {
     public static void eliminarStop(char[] arrPalabras, int ini, int fin) {
         for (int i = ini; i <= fin; i++) {
             correrAIzquierda(arrPalabras, ini);
-        }arrPalabras[MAX_P - 1] = ' '; // Llenar el último espacio con un espacio
+        }//arrPalabras[MAX_P - 1] = ' '; // Llenar el último espacio con un espacio
     }
 
     public static void correrAIzquierda(char[] arrPalabras, int ini) {
@@ -72,10 +72,10 @@ public class ej_parcial_stop {
     }
     public static boolean sonIgual(int inicio, int fin, char[] arrPalabras, int inicioS, int finS, char[] arrStopwords) {
         boolean aux=false;
-            while (inicio<=fin && arrPalabras[inicio] == arrStopwords[inicioS]) {
+        while (inicio<=fin && arrPalabras[inicio] == arrStopwords[inicioS]) {
                 inicio++;
                 inicioS++;
-            }
+        }
         if (inicio>fin) {
             aux=true;
         }

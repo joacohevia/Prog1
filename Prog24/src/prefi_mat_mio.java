@@ -36,7 +36,7 @@ public class prefi_mat_mio {
         int ini=0,fin=-1;
 
         float prom=0;
-        boolean aux=true,sies=false;
+        boolean aux=true;
         while (ini<MAXC && aux) {
             ini=buscarInicio(mat,fin+1);
             if (ini<MAXC) {
@@ -44,10 +44,8 @@ public class prefi_mat_mio {
                     float total = prom_creciente(ini, fin, mat);
                     if (total>prom) {
                         prom=total;
-                        sies=true;
                     }else{
                         aux=false;
-                        sies=false;
                     }
                     
                     /*if (prom_creciente(ini,fin,mat)) {
@@ -59,7 +57,7 @@ public class prefi_mat_mio {
                 
             }
         }
-        return sies;
+        return aux;
     }
     //ME EQUIVOQUE EN Q UNA MISMA FUNCION COMPARE EL ANTERIOR CUANDO DEBI HACERLO EN OTRA
     //PORQ CADA VEZ Q ITERA PROM ANTERIOR VUELVE A SER 0 EMTONCES AL LLAMARLO DESDE EL 

@@ -61,7 +61,7 @@ public class examen_mio {
         for (int i = 0; i < MAX_A; i++) {
             if (arrA[i] >= sec) {
                 arrA[i] = -arrA[i];
-                return i + 1; 
+                return i + 1; //esto es para que quede bien en el syso
             }
         }
         return -1; 

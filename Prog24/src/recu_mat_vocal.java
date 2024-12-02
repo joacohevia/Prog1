@@ -94,7 +94,8 @@ public class recu_mat_vocal {
         }
         public static boolean esVocal(char c){
                 switch (c) {
-                 case 'a':case 'e':case 'i':case 'o':case 'u':
+                 case 'a':
+                 case 'e':case 'i':case 'o':case 'u':
                  case 'A':case 'E':case 'I':case 'O':case 'U':
                     return true;
             } 

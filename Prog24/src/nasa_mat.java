@@ -18,11 +18,11 @@ intensidades superiores a un determinado valor alfanumérico L en una de sus sec
 (canales de rastreo con lecturas consecutivas distintas de 0).
 Para el siguiente ejemplo donde N=5 y M=20 (18 canales), K=2, L=’F’ y P=2 existe UNA
 señal de posible origen extraterrestre en las lecturas 0 y 1
-1 2 G H 2 A 3 3 R B J 6 5 K
-2 1 4 5 R P D 3 7 M N W
-4 G 8 3 5 7 1 2 X D 4 1
-5 T T M A P 1 1 2 1 3 1 3
-6 6 4 5 4 A 2 1 2 G 4 2 1 8
+1 2 G H  2 A 3  3 R B J  6 5 K
+2 1 4 5  R P  D 3  7 M N W
+4 G 8  3 5 7 1  2 X  D 4 1
+5 T T M  A P 1 1  2 1 3  1 3
+6 6 4  5 4  A 2 1 2  G 4 2 1 8
 Eso es así, porque, en la fila 0, la secuencia 12GH y la secuencia 3RBJ poseen al menos
 dos intensidades superiores a ‘F’, además, de forma consecutiva, en la fila 1, la secuencia
 RP y la secuencia 7MNW también lo cumplen. Nótese que la fila 4 cumple el criterio de que
@@ -35,30 +35,36 @@ public class nasa_mat {
         public static final int MAXC = 20;
         public static final int MAXF = 5;
         public static final int SEPARADOR = ' ';
-        public static final int P=2;
-        public static final int K=2;
-        public static final char L='F';
+        public static final int P=2;//FILAS CONSECUTIVAS
+        public static final int K=2;//CANT SEC SUPERIORES A L
+        public static final char L='F';//UN VALOR DE LA SEC TIENE QUE SER MAYOR
     
         public static void main(String[] args) {
             // Ejemplo de matriz de intensidades
-            char[][] matriz = {
+            char[][] matriz = {                        //10
                 {' ','1','2','G','H',' ','2','A','3',' ','3','R','B','J',' ','6','5','K',' ',' '},
-                {' ',' ','2','1','4','5',' ','R','P',' ','D','3',' ','7','A','A','A',' ',' ',' '},
-                {' ','4','A','A',' ','3','5','7','1',' ',' ','2','X',' ','D','4','1',' ',' ',' '},
+                {' ',' ','2','1','4','5',' ','R','P',' ','D','3',' ','7','M','N','W',' ',' ',' '},
+                {' ','4','G','8',' ','3','5','7','1',' ',' ','2','X',' ','D','4','1',' ',' ',' '},
                 {' ',' ',' ','5','T','T','M',' ','A','P','1','1',' ','2','1','3',' ','1','3',' '},
-                {' ','6','T','M',' ','5','4',' ',' ','A','2','1','2',' ','G','4','2','1','8',' '}
+                {' ','6','6','4',' ','5','4',' ',' ','A','2','1','2',' ','G','4','2','1','8',' '}
             };
-            
+
            descomprimir(matriz);
         }
         public static void descomprimir(char[][]matriz){
-            int cant_senial=0;
+            int cant_senial=0,cont=0;
             int senial=0;
             for(int i=0; i<MAXF; i++){
-                cant_senial+=buscar_senial(matriz[i]);
-                if (cant_senial>=P) {
-                    senial++;
-                    cant_senial=0;
+                cant_senial=buscar_senial(matriz[i]);
+                if (cant_senial>0) {
+                    cont++;
+                    if (cont>=P) {
+                        mostrar_arreglo(matriz[i]);
+                        senial++;
+                        cont=0;
+                    }  
+                }else{
+                    cont=0;
                 }
             }
             System.out.println("la cantidad de señales son: "+senial);
@@ -66,21 +72,26 @@ public class nasa_mat {
         
         public static int buscar_senial(char[]mat){
             int ini=0,fin=-1,consecutivo=0,senial=0;
-            boolean sies=true;
-            while (ini<MAXC) {
+            boolean sies=false;
+            while (ini<MAXC && !sies) {
                 ini=buscar_ini(mat,fin+1);
                 if (ini<MAXC) {
                     fin=buscar_fin(mat,ini);
                     senial=analizar_estudio(ini,fin,mat);
-                    if (senial>0 && sies) {
-                        consecutivo++;
-                        sies=false;
+                    if (senial>0) {
+                        consecutivo=1;
+                        sies=true;
                     }
                 }
             }
             return consecutivo;
         }
-
+        public static void mostrar_arreglo(char[] arrM) {
+            for (int i = 0; i < MAXC; i++) {
+                System.out.print(arrM[i] + "|");
+            }
+            System.out.println();
+        }
         public static int analizar_estudio(int ini,int fin, char[]mat){
             int cant=0;
             if (es_mayor(ini, fin, mat)) {
@@ -92,6 +103,7 @@ public class nasa_mat {
             int cont=0;
             boolean aux =false;
             while (ini<=fin ) {
+                char let = mat[ini];
                 if (mat[ini]>=L && es_mayus(mat[ini])) {
                     cont++;
                 }

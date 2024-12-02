@@ -2,11 +2,11 @@ public class ej_parcial_prac {
     /*dado un arr de sec de tamañio max en forma ascendente se pide invertir aquellas que contengan un
      * num dado para las q no rellenar con otro nunm dado
      */
-        public static final int MAX = 15;
+        public static final int MAX = 16;
         public static final int SEPARADOR = 0;
         public static void main(String[] args) {
           
-            int[] arr = {0,2,3,0,1,5,0,0,3,3,3,0,1,2,0};
+            int[] arr = {0,2,3,4,0,1,5,0,0,3,12,13,0,1,2,0};
             int numeroBuscado = 3;
             int numeroReemplazar = -1;
             mostrarArreglo(arr);
@@ -56,7 +56,6 @@ public class ej_parcial_prac {
           }
           
           public static boolean estaNumSecOrd(int[] arr, int ini, int fin, int num){
-            
              int i = ini;
              while (i <= fin && arr[i] < num){
                i++;
@@ -66,7 +65,6 @@ public class ej_parcial_prac {
               }
               else 
                   return false;
-           
             /*
               }
               else

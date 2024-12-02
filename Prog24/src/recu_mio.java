@@ -32,6 +32,12 @@ public class recu_mio {
       descomprimir(matriz,arr);
       mostrar(matriz);
     }
+    public static void descomprimir(char[][]matriz,char[]arr){
+        int cant=0;
+        for(int i=0;i<MAXF;i++){
+            cant+=buscar_veg(matriz[i],arr);
+        }System.out.println("la cant total es:"+cant);
+    }
     public static int buscar_veg(char[]mat,char[]arr){
         int ini = 0;
         int fin = -1;
@@ -54,21 +60,6 @@ public class recu_mio {
         }
         return canTotal;
     }
-    public static boolean mayuscula(char c){
-    return ('A' <= c && c <= 'Z'); 
-    // c  >='a' && c <= 'z' devuelve true si esta entre la A y la Z
-    }
-   
-    //1_ME EQUIVOQUE EN LLAMAR A ELIMINAR EN TODA LA SEC YO SOLO QUIERO ELIMINAR UNA OCURRENCIA DE ESA SEC POR ESO
-    //LO LLAMO SOLO UNA VEZ
-    //2_AL BUSCAR INI Y FIN ME EQUIVOQUE LLAMANDO LA FUNCION
-    //3_LUEGO DE ELIMINAR DEBO RESTAR O ACT I-- Y FIN-- PARA QUE SIGA BUSCANDO EN LA MISMA SEC
-   
-    public static void corrimiento_izq(int ini, char[]mat){
-        for(int i=ini; i<MAXC-1; i++){
-            mat[i]=mat[i+1];
-        }
-    }
     public static int buscar_arr(int ini,int fin,char[]arr,char[]mat) {
         int eliminado=0;
         for (int i = ini; i <= fin; i++) {
@@ -81,22 +72,21 @@ public class recu_mio {
         }
         return eliminado; 
     }
-    /*public static int buscar_arr(int ini, int fin, char[] arr, char[] mat) {
-    int eliminado = 0;
-    int i = ini;
-    while (i <= fin) {
-        if (!contiene(arr, mat[i]) && mayuscula(mat[i])) {
-            corrimiento_izq(i, mat);
-            eliminado++;
-            i--; // Corregido, cuenta de nuevo desde el elemento anterior al que se eliminó para no saltear ninguno
-            fin--; // Disminuir el rango de fin porque se eliminó un elemento
-        }
-        i++;
+    public static boolean mayuscula(char c){
+    return ('A' <= c && c <= 'Z'); 
+    // c  >='A' && c <= 'Z' devuelve true si esta entre la A y la Z
     }
-    return eliminado;
-}
- */
-    
+   
+    //1_ME EQUIVOQUE EN LLAMAR A ELIMINAR EN TODA LA SEC YO SOLO QUIERO ELIMINAR UNA OCURRENCIA DE ESA SEC POR ESO
+    //LO LLAMO SOLO UNA VEZ
+    //2_AL BUSCAR INI Y FIN ME EQUIVOQUE LLAMANDO LA FUNCION
+    //3_LUEGO DE ELIMINAR DEBO RESTAR O ACT I-- Y FIN-- PARA QUE SIGA BUSCANDO EN LA MISMA SEC
+   
+    public static void corrimiento_izq(int ini, char[]mat){
+        for(int i=ini; i<MAXC-1; i++){
+            mat[i]=mat[i+1];
+        }
+    }
     public static boolean contiene(char[] arr, char c) {
         for (int j = 0; j < MAX_arr; j++) {
             if (arr[j] == c && mayuscula(c)) {
@@ -119,12 +109,7 @@ public class recu_mio {
         return ini;
     }
 
-    public static void descomprimir(char[][]matriz,char[]arr){
-        int cant=0;
-        for(int i=0;i<MAXF;i++){
-            cant+=buscar_veg(matriz[i],arr);
-        }System.out.println("la cant total es:"+cant);
-    }
+    
     public static void mostrar(char[][] matriz){
         for(int i=0; i<MAXF; i++){
             mostrar_arr(matriz[i]);

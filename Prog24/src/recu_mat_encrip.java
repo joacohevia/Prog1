@@ -32,6 +32,7 @@ public class recu_mat_encrip {
             {' ','e','n','c','u','e','n','t','r','a',' ','e','n',' ',' ',' '},
             {' ','C','o','l','o','n','i','a',' ',' ',' ',' ',' ',' ',' ',' '}
         };
+        
         mostrar_matriz(matriz);
         descomprimir(matriz);
         mostrar_matriz(matriz);
@@ -39,7 +40,7 @@ public class recu_mat_encrip {
     public static void descomprimir(char[][]matriz){
         int cantidad=0;
         for(int i=0; i<MAXFIL; i++){
-            cantidad+= encriptar(matriz[1]);
+            cantidad+= encriptar(matriz[i]);
         }
         System.out.println("se encriptaron: "+cantidad);
     }

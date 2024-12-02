@@ -13,7 +13,7 @@ con el requisito antes mencionado. La incorporación del libro se realiza al fin
 Por ejemplo, dado un valor K = 300, un libro promocional R = 999 y una cantidad C = 2, el arreglo resultante será:
 |0|0|101|202|303|999|0|404|505|0|606|707|0|808|909|0|0|0|0|0
 Se debe indicar cuántos libros R quedaron sin agregar a los pedidos. En este ejemplo,
-no quedaron libros por agregar.
+quedo un libro por agregar.
  */
 public class ej_parcial_libros {
     public static final int MAX=19;
@@ -21,7 +21,7 @@ public class ej_parcial_libros {
 
     public static void main(String[] args) {
         int[]arr_libros = {0,0,101,202,303,0,404,505,0,606,707,0,808,909,0,0,0,0,0};
-        int ini=0,fin=-1,produc=123,cant=2,num=800;
+        int ini=0,fin=-1,produc=123,cant=2,num=410;
         mostrar_arreglo(arr_libros);
         while (ini<MAX) {
             ini=buscar_inicio(arr_libros,fin+1);
@@ -35,7 +35,7 @@ public class ej_parcial_libros {
             }
         }
         mostrar_arreglo(arr_libros);
-        System.out.print("Productos sin agregar: "+cant);
+        System.out.print("Libros sin agregar: "+cant);
     }
     public static void agregar(int fin,int[]arr_libros,int produc){
         for(int i=MAX-1; i>fin; i--){
